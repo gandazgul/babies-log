@@ -39,14 +39,7 @@ async function logFood(params, session, response) {
         prompt: {
             override: false,
             firstSimple: {
-                variants: [
-                    {
-                        speech: `${params.name}'s food logged.`,
-                    },
-                    {
-                        speech: `Got ${params.name}'s food.`,
-                    },
-                ],
+                speech: `Logged ${params.quantity} ounces for ${params.name}.`,
             },
         },
         scene: {
@@ -74,14 +67,7 @@ async function logDiapers(params, session, response) {
         prompt: {
             override: false,
             firstSimple: {
-                variants: [
-                    {
-                        speech: `${params.name} had a ${params.kind} diaper`,
-                    },
-                    {
-                        speech: `${params.name}'s ${params.kind} diaper logged.`,
-                    },
-                ],
+                speech: `Logged ${params.kind} diaper for ${params.name}`,
             },
         },
         scene: {
@@ -109,14 +95,7 @@ async function logSleep(params, session, response, status) {
         prompt: {
             override: false,
             firstSimple: {
-                variants: [
-                    {
-                        speech: status === 'sleep' ? `${params.name} is asleep.` : `${params.name} is awake.`,
-                    },
-                    {
-                        speech: status === 'sleep' ? `${params.name} is napping.` : `${params.name} woke up.`,
-                    },
-                ],
+                speech: status === 'sleep' ? `Logged that ${params.name} is asleep` : `Logged that ${params.name} is awake`,
             },
         },
         scene: {
@@ -154,7 +133,6 @@ exports.babyLog = functions.https.onRequest(async (request, response) => {
                     override: false,
                     firstSimple: {
                         speech: 'No handler matched',
-                        text: 'No handler matched',
                     },
                 },
                 scene: {

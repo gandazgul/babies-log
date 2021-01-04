@@ -1,5 +1,9 @@
 {
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "react-app",
+        "react-app/jest"
+    ],
     "parserOptions": {
         // Required for certain syntax usages
         "ecmaVersion": 2018
